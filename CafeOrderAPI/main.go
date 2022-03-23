@@ -34,5 +34,5 @@ func main() {
 	router.POST("/createOrder", fetchOrderHandler.FetchOrder)
 	router.GET("/getOrder", getOrderHandler.GetOrder)
 
-	router.Run()
+	router.Run(":8080")
 }
