@@ -2,12 +2,12 @@ package main
 
 import (
 	"CafeOrderAPI/handler"
-	"CafeOrderAPI/middleware"
 	"CafeOrderAPI/model"
 	"log"
 
 	"fmt"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -29,7 +29,7 @@ func main() {
 
 	router := gin.Default()
 
-	router.Use(middleware.CORSMiddleware())
+	router.Use(cors.Default())
 
 	fetchOrderHandler := handler.NewFetchOrderHandler(db)
 	getOrderHandler := handler.NewGetOrderHandler(db)
