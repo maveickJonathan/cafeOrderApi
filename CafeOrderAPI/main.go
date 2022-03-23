@@ -2,6 +2,7 @@ package main
 
 import (
 	"CafeOrderAPI/handler"
+	"CafeOrderAPI/middleware"
 	"CafeOrderAPI/model"
 	"log"
 
@@ -27,6 +28,8 @@ func main() {
 	fmt.Println("Database connection succeed")
 
 	router := gin.Default()
+
+	router.Use(middleware.CORSMiddleware())
 
 	fetchOrderHandler := handler.NewFetchOrderHandler(db)
 	getOrderHandler := handler.NewGetOrderHandler(db)
