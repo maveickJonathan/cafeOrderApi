@@ -29,7 +29,13 @@ func main() {
 
 	router := gin.Default()
 
-	router.Use(cors.Default())
+	corsConfig := cors.DefaultConfig()
+
+	corsConfig.AllowAllOrigins = true
+
+	corsConfig.AddAllowMethods("OPTIONS")
+
+	router.Use(cors.New(corsConfig))
 
 	fetchOrderHandler := handler.NewFetchOrderHandler(db)
 	getOrderHandler := handler.NewGetOrderHandler(db)
